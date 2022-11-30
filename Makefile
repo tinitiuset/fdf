@@ -3,6 +3,7 @@ NAME = fdf
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
+INCLUDES = -I MLX42/include/MLX42/
 LIBS = ./MLX42/libmlx42.a -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 SRCS = main.c
@@ -14,7 +15,7 @@ libmlx:
 	$(MAKE) -C MLX42
 
 %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) $(LIBS) -o $(NAME)
