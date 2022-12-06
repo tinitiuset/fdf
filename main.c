@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 12:41:23 by mvalient          #+#    #+#             */
-/*   Updated: 2022/11/30 12:44:38 by mvalient         ###   ########.fr       */
+/*   Created: 2022/12/06 13:17:56 by mvalient          #+#    #+#             */
+/*   Updated: 2022/12/06 13:18:58 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "fdf.h"
 
-# include "math.h"
-# include "mlx.h"
-
-# include "./libft_extra/ft_printf/ft_printf.h"
-# include "./libft_extra/get_next_line/get_next_line.h"
-# include "./libft_extra/libft/libft.h"
-
-# define WIDTH 800
-# define HEIGHT 600
-
-#endif
+int	main(void)
+{
+	ft_printf("ASD");
+	return (0);
+}

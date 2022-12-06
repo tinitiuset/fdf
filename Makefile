@@ -3,16 +3,19 @@ NAME = fdf
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-INCLUDES = -I MLX42/include/MLX42/
-LIBS = ./MLX42/libmlx42.a -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+INCLUDES = -I minilibx-linux
+LIBS = ./minilibx-linux/libmlx_Linux.a ./libft_extra/libft_extra.a
 
 SRCS = main.c
 OBJS = $(SRCS:.c=.o)
 
-all: libmlx $(NAME)
+all: minilibx libft $(NAME)
 
-libmlx:
-	$(MAKE) -C MLX42
+minilibx:
+	$(MAKE) -C ./minilibx-linux
+
+libft:
+	$(MAKE) -C ./libft_extra
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
@@ -22,11 +25,13 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	$(MAKE) -C MLX42 clean
+	$(MAKE) -C ./libft_extra clean
+	$(MAKE) -C ./minilibx-linux clean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C MLX42 fclean
+	$(MAKE) -C ./libft_extra fclean
+	$(MAKE) -C ./minilibx-linux clean
 
 re: clean all
 
