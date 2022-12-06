@@ -4,3 +4,6 @@
 [submodule "libft_extra"]
 	path = libft_extra
 	url = git@github.com:tinitiuset/libft_extra.git
+[submodule "minilibx-linux"]
+	path = minilibx-linux
+	url = git@github.com:42Paris/minilibx-linux.git
