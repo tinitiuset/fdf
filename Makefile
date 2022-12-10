@@ -1,10 +1,10 @@
 NAME = fdf
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS =
 
 INCLUDES = -I minilibx-linux
-LIBS = ./minilibx-linux/libmlx_Linux.a ./libft_extra/libft_extra.a
+LIBS = ./minilibx-linux/libmlx_Linux.a ./libft_extra/libft_extra.a -lX11 -lXext
 
 SRCS = main.c
 OBJS = $(SRCS:.c=.o)
