@@ -30,10 +30,10 @@
 
 typedef struct s_point
 {
-	int x;
-	int y;
-	int z;
-	struct s_point *next;
+	int				x;
+	int				y;
+	int				z;
+	struct s_point	*next;
 }				t_point;
 
 void	read_file(char *file);

@@ -6,13 +6,13 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:22:34 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/10 19:38:24 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:33:07 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point *points;
+t_point	*g_points;
 
 void	ft_add_point(int x, int y, int z)
 {
@@ -26,12 +26,12 @@ void	ft_add_point(int x, int y, int z)
 	new_point->y = y;
 	new_point->z = z;
 	new_point->next = NULL;
-	if (!points)
+	if (!g_points)
 	{
-		points = new_point;
+		g_points = new_point;
 		return ;
 	}
-	node = points;
+	node = g_points;
 	while (node->next)
 		node = node->next;
 	node->next = new_point;

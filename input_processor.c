@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:16:31 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/12 12:24:07 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:31:15 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ static void	ft_draw_line(char **line)
 		if (*line[x] == 10)
 		{
 			y++;
-			break;
+			break ;
 		}
-		ft_add_point(x, y , ft_atoi(line[x]));
+		ft_add_point(x, y, ft_atoi(line[x]));
 		x++;
 	}
-
 }
 
 void	read_file(char *file)
 {
-	char *line;
-	int	fd;
+	char	*line;
+	int		fd;
 
 	line = NULL;
-	if ((fd = open(file, O_RDONLY)) == -1)
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
 		return ;
 	line = get_next_line(fd);
 	ft_draw_line(ft_split(line, 32));
@@ -50,4 +50,3 @@ void	read_file(char *file)
 	}
 	return ;
 }
-
