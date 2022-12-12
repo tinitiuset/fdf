@@ -6,13 +6,14 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:41:23 by mvalient          #+#    #+#             */
-/*   Updated: 2022/11/30 12:44:38 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/10 19:29:48 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# include "fcntl.h"
 # include "math.h"
 # include "mlx.h"
 
@@ -25,5 +26,17 @@
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
+# define DEBUG 1
+
+typedef struct s_point
+{
+	int x;
+	int y;
+	int z;
+	struct s_point *next;
+}				t_point;
+
+void	read_file(char *file);
+void	ft_add_point(int x, int y, int z);
 
 #endif

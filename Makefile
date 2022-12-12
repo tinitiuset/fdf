@@ -1,12 +1,12 @@
 NAME = fdf
 
 CC = gcc
-CFLAGS =
+CFLAGS = -g
 
 INCLUDES = -I minilibx-linux
 LIBS = ./minilibx-linux/libmlx_Linux.a ./libft_extra/libft_extra.a -lX11 -lXext
 
-SRCS = main.c
+SRCS = main.c input_processor.c point_utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: minilibx libft $(NAME)

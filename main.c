@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:17:56 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/10 17:08:14 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/10 18:13:25 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	ft_printf("Setting pixel X: %d, Y: %d, Color: %X\n", x, y, color);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -45,5 +45,6 @@ int	main(void)
 	my_mlx_pixel_put(&img, 10, 10, GREEN);
 	my_mlx_pixel_put(&img, 15, 15, BLUE);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	read_file(argv[1]);
 	mlx_loop(mlx);
 }
