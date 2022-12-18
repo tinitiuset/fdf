@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:41:23 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/18 14:18:17 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:22:16 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
+# define MULTIPLIER 50
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
