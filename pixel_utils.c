@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:47:50 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/18 14:22:16 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:12:24 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,27 @@ void	ft_add_pixel(t_pixel **list, int x, int y, int color)
 	while (node->next)
 		node = node->next;
 	node->next = new_pixel;
+}
+
+static void	ft_put_pixel(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *) dst = color;
+	if (DEBUG)
+		ft_printf("Setting pixel X: %d, Y: %d, Color: %X\n", x, y, color);
+}
+
+void	ft_put_pixel_list(t_data *img, t_pixel *pixel_list_head)
+{
+	t_pixel	*current_pixel;
+
+	current_pixel = pixel_list_head;
+	while (current_pixel)
+	{
+		ft_put_pixel(img,
+			current_pixel->x, current_pixel->y, current_pixel->color);
+		current_pixel = current_pixel->next;
+	}
 }

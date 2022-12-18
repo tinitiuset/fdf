@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:36:10 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/18 19:47:47 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/18 20:39:35 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ static void	ft_isometric(t_pixel **pixel_list, t_point *point)
 	double	y;
 
 	x = (point->x - point->y) * cos(0.523599);
-	y = -(point->z) + (point->x + point->y) * sin(0.523599);
+	y = (-(point->z)) + (point->x + point->y) * sin(0.523599);
+	x = WIDTH / 2 + (x * MULTIPLIER);
+	y = HEIGHT / 2 + (y * MULTIPLIER);
 	ft_add_pixel(&*pixel_list,
-		(int)(x * MULTIPLIER), (int)(y * MULTIPLIER), 0xFFFFFF);
+		(int)x, (int)y, 0xFFFFFF);
 }
 
 t_pixel	*ft_points_to_pixels(t_point *point_list_head)

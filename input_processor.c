@@ -20,14 +20,10 @@ static void	ft_store_line(char **line, t_point **list)
 	x = 0;
 	while (line[x])
 	{
-		if (*line[x] == 10)
-		{
-			y++;
-			break ;
-		}
 		ft_add_point(&*list, x, y, ft_atoi(line[x]));
 		x++;
 	}
+	y++;
 }
 
 t_point	*ft_read_file(char *file)

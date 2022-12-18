@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:41:23 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/18 14:22:16 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/18 21:03:59 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
-# define MULTIPLIER 50
-# define RED 0x00FF0000
-# define GREEN 0x0000FF00
-# define BLUE 0x000000FF
+# define MULTIPLIER 10
 # define DEBUG 1
 
 typedef struct s_point
@@ -51,9 +48,19 @@ typedef struct s_object_data
 	t_point			*points;
 }				t_object_data;
 
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 t_point	*ft_read_file(char *file);
 t_pixel	*ft_points_to_pixels(t_point *point_list_head);
 void	ft_add_point(t_point **list, int x, int y, int z);
 void	ft_add_pixel(t_pixel **list, int x, int y, int color);
+void	ft_put_pixel_list(t_data *img, t_pixel *pixel_list_head);
 
 #endif
