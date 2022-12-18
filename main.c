@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:17:56 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/10 18:13:25 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:58:07 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	void			*mlx;
+	void			*mlx_win;
+	t_data			img;
+	t_object_data	object_data;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "fdf");
@@ -45,6 +46,7 @@ int	main(int argc, char **argv)
 	my_mlx_pixel_put(&img, 10, 10, GREEN);
 	my_mlx_pixel_put(&img, 15, 15, BLUE);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	read_file(argv[1]);
+	object_data.points = ft_read_file(argv[1]);
+	object_data.pixels = ft_points_to_pixels(object_data.points);
 	mlx_loop(mlx);
 }
