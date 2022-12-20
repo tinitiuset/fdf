@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:47:50 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 19:36:39 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/20 19:41:16 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_add_pixel_to_list(t_pixel **list, t_pixel pixel)
 	t_pixel	*node;
 
 	if (DEBUG)
-		ft_printf("Pixel to be stored: %d,%d, Color: %X\n", pixel.x, pixel.y, pixel.color);
+		ft_printf("Pixel to be stored: %d,%d, Color: %X\n",
+			pixel.x, pixel.y, pixel.color);
 	new_pixel = malloc(sizeof(t_pixel));
 	new_pixel->x = pixel.x;
 	new_pixel->y = pixel.y;
