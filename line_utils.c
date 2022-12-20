@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:46:06 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 20:31:56 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/20 20:39:09 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,17 @@ static t_line	*ft_horizontal_line(t_point *point)
 	t_line	*line;
 	t_pixel	pixel;
 
-	if (point && point->next)
+	if ((point && point->next) && point->y == point->next->y)
 	{
-		if (point->y == point->next->y)
-		{
-			line = malloc(sizeof(t_line));
-			pixel = ft_point_to_pixel(point);
-			line->beginx = pixel.x;
-			line->beginy = pixel.y;
-			pixel = ft_point_to_pixel(point->next);
-			line->endx = pixel.x;
-			line->endy = pixel.y;
-			line->color = pixel.color;
-			return (line);
-		}
+		line = malloc(sizeof(t_line));
+		pixel = ft_point_to_pixel(point);
+		line->beginx = pixel.x;
+		line->beginy = pixel.y;
+		pixel = ft_point_to_pixel(point->next);
+		line->endx = pixel.x;
+		line->endy = pixel.y;
+		line->color = pixel.color;
+		return (line);
 	}
 	return (NULL);
 }
