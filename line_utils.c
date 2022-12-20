@@ -6,13 +6,13 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:46:06 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 18:30:38 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/20 20:31:56 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	ft_put_line(t_data *data, t_line line)
+static void	ft_put_line(t_data *data, t_line *line)
 {
 	int		pixels;
 	double	delta_x;
@@ -20,42 +20,56 @@ static void	ft_put_line(t_data *data, t_line line)
 	double	pixel_x;
 	double	pixel_y;
 
-	delta_x = line.endx - line.beginx;
-	delta_y = line.endy - line.beginy;
+	if (!line)
+		return ;
+	delta_x = line->endx - line->beginx;
+	delta_y = line->endy - line->beginy;
 	pixels = (int) sqrt(pow(delta_x, 2) + pow(delta_y, 2));
 	delta_x = delta_x / pixels;
 	delta_y = delta_y / pixels;
-	pixel_x = line.beginx;
-	pixel_y = line.beginy;
+	pixel_x = line->beginx;
+	pixel_y = line->beginy;
 	while (pixels)
 	{
-		ft_put_pixel(data, (int) pixel_x, (int) pixel_y, line.color);
+		ft_put_pixel(data, (int) pixel_x, (int) pixel_y, line->color);
 		pixel_x += delta_x;
 		pixel_y += delta_y;
 		pixels--;
 	}
-	if (DEBUG)
-		ft_printf("Drawing line from %d, %d to %d, %d. Color: %X\n",
-			line.beginx, line.beginy, line.endx, line.endy, line.color);
+	free(line);
 }
 
-void	ft_put_lines(t_data *data, t_pixel *pixel_list_head)
+static t_line	*ft_horizontal_line(t_point *point)
 {
-	t_pixel	*current_pixel;
-	t_line	current_line;
+	t_line	*line;
+	t_pixel	pixel;
 
-	current_pixel = pixel_list_head;
-	while (current_pixel && current_pixel->next)
+	if (point && point->next)
 	{
-		if (current_pixel->x < current_pixel->next->x)
+		if (point->y == point->next->y)
 		{
-			current_line.beginx = current_pixel->x;
-			current_line.beginy = current_pixel->y;
-			current_line.endx = current_pixel->next->x;
-			current_line.endy = current_pixel->next->y;
-			current_line.color = 0xFFFFFF;
-			ft_put_line(data, current_line);
+			line = malloc(sizeof(t_line));
+			pixel = ft_point_to_pixel(point);
+			line->beginx = pixel.x;
+			line->beginy = pixel.y;
+			pixel = ft_point_to_pixel(point->next);
+			line->endx = pixel.x;
+			line->endy = pixel.y;
+			line->color = pixel.color;
+			return (line);
 		}
-		current_pixel = current_pixel->next;
+	}
+	return (NULL);
+}
+
+void	ft_put_lines(t_data *data, t_point *point_list_head)
+{
+	t_point	*current_point;
+
+	current_point = point_list_head;
+	while (current_point)
+	{
+		ft_put_line(data, ft_horizontal_line(current_point));
+		current_point = current_point->next;
 	}
 }
