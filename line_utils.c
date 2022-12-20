@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:46:06 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 21:02:57 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:06:12 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_line	*ft_horizontal_line(t_point *point)
 
 static t_line	*ft_vertical_line(t_point *point)
 {
-	t_point *next_point;
+	t_point	*next_point;
 	t_line	*line;
 	t_pixel	pixel;
 

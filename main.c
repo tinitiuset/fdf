@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:17:56 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 20:34:16 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/20 20:35:49 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	object_data.points = ft_read_file(argv[1]);
-	object_data.pixels = ft_points_to_pixels(object_data.points);
 	ft_put_lines(&img, object_data.points);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
