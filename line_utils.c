@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:46:06 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 20:39:09 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:02:57 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,39 @@ static t_line	*ft_horizontal_line(t_point *point)
 	return (NULL);
 }
 
-void	ft_put_lines(t_data *data, t_point *point_list_head)
+static t_line	*ft_vertical_line(t_point *point)
 {
-	t_point	*current_point;
+	t_point *next_point;
+	t_line	*line;
+	t_pixel	pixel;
 
-	current_point = point_list_head;
+	if (!point->next)
+		return (NULL);
+	next_point = point->next;
+	while (point->x != next_point->x)
+	{
+		if (next_point->next)
+			next_point = next_point->next;
+		else
+			break ;
+	}
+	line = malloc(sizeof(t_line));
+	pixel = ft_point_to_pixel(point);
+	line->beginx = pixel.x;
+	line->beginy = pixel.y;
+	pixel = ft_point_to_pixel(next_point);
+	line->endx = pixel.x;
+	line->endy = pixel.y;
+	line->color = pixel.color;
+	return (line);
+}
+
+void	ft_put_lines(t_data *data, t_point *current_point)
+{
 	while (current_point)
 	{
 		ft_put_line(data, ft_horizontal_line(current_point));
+		ft_put_line(data, ft_vertical_line(current_point));
 		current_point = current_point->next;
 	}
 }
