@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:41:23 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/18 21:03:59 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/20 18:13:51 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
-# define MULTIPLIER 10
+# define MULTIPLIER 30
 # define DEBUG 1
 
 typedef struct s_point
@@ -41,6 +41,15 @@ typedef struct s_pixel
 	int				color;
 	struct s_pixel	*next;
 }				t_pixel;
+
+typedef struct s_line
+{
+	int	beginx;
+	int	endx;
+	int	beginy;
+	int	endy;
+	int	color;
+}				t_line;
 
 typedef struct s_object_data
 {
@@ -61,6 +70,8 @@ t_point	*ft_read_file(char *file);
 t_pixel	*ft_points_to_pixels(t_point *point_list_head);
 void	ft_add_point(t_point **list, int x, int y, int z);
 void	ft_add_pixel(t_pixel **list, int x, int y, int color);
-void	ft_put_pixel_list(t_data *img, t_pixel *pixel_list_head);
+void	ft_put_pixel(t_data *data, int x, int y, int color);
+void	ft_put_pixels(t_data *img, t_pixel *pixel_list_head);
+void	ft_put_lines(t_data *img, t_pixel *pixel_list_head);
 
 #endif
