@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:17:56 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/21 13:04:38 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:23:56 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,12 @@ int	main(int argc, char **argv)
 	(void)argc;
 	mlx = malloc(sizeof(t_mlx));
 	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, 1920, 1080, "fdf");
-	img.img = mlx_new_image(mlx->mlx, 1920, 1080);
+	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fdf");
+	img.img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
 	mlx->points = ft_read_file(argv[1]);
-	ft_put_lines(&img, mlx->points);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img.img, 0, 0);
+	ft_put_lines(&img, mlx);
 	mlx_key_hook(mlx->win, key_hook, mlx);
 	mlx_loop(mlx->mlx);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:46:06 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 21:06:12 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:33:01 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,16 @@ static t_line	*ft_vertical_line(t_point *point)
 	return (line);
 }
 
-void	ft_put_lines(t_img *data, t_point *current_point)
+void	ft_put_lines(t_img *data, t_mlx *mlx)
 {
+	t_point	*current_point;
+
+	current_point = mlx->points;
 	while (current_point)
 	{
 		ft_put_line(data, ft_horizontal_line(current_point));
 		ft_put_line(data, ft_vertical_line(current_point));
+		mlx_put_image_to_window(mlx->mlx, mlx->win, data->img, 0, 0);
 		current_point = current_point->next;
 	}
 }
