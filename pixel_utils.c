@@ -36,7 +36,7 @@ void	ft_add_pixel_to_list(t_pixel **list, t_pixel pixel)
 	node->next = new_pixel;
 }
 
-void	ft_put_pixel(t_data *img, int x, int y, int color)
+void	ft_put_pixel(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
@@ -46,7 +46,7 @@ void	ft_put_pixel(t_data *img, int x, int y, int color)
 		ft_printf("Setting pixel X: %d, Y: %d, Color: %X\n", x, y, color);
 }
 
-void	ft_put_pixels(t_data *img, t_pixel *pixel_list_head)
+void	ft_put_pixels(t_img *img, t_pixel *pixel_list_head)
 {
 	t_pixel	*current_pixel;
 

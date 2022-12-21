@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:41:23 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 20:27:46 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/21 12:52:21 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,30 @@ typedef struct s_line
 	int	color;
 }				t_line;
 
-typedef struct s_object_data
+typedef struct s_mlx
 {
-	t_pixel			*pixels;
-	t_point			*points;
-}				t_object_data;
+	void		*mlx;
+	void		*win;
+	t_point		*points;
+}				t_mlx;
 
-typedef struct s_data
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}				t_img;
 
 t_point	*ft_read_file(char *file);
 t_pixel	ft_point_to_pixel(t_point *point);
+void	ft_clear_point_list(t_point **lst, void (*del)(void *));
 t_pixel	*ft_points_to_pixels(t_point *point_list_head);
 void	ft_add_point(t_point **list, int x, int y, int z);
 void	ft_add_pixel_to_list(t_pixel **list, t_pixel pixel);
-void	ft_put_pixel(t_data *img, int x, int y, int color);
-void	ft_put_pixels(t_data *img, t_pixel *pixel_list_head);
-void	ft_put_lines(t_data *data, t_point *point_list_head);
+void	ft_put_pixel(t_img *img, int x, int y, int color);
+void	ft_put_pixels(t_img *img, t_pixel *pixel_list_head);
+void	ft_put_lines(t_img *data, t_point *point_list_head);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:16:31 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/18 14:15:15 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/21 12:27:40 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ static void	ft_store_line(char **line, t_point **list)
 	while (line[x])
 	{
 		ft_add_point(&*list, x, y, ft_atoi(line[x]));
+		free(line[x]);
 		x++;
 	}
 	y++;
+	free(line);
 }
 
 t_point	*ft_read_file(char *file)

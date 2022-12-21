@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static void	ft_put_line(t_data *data, t_line *line)
+static void	ft_put_line(t_img *data, t_line *line)
 {
 	int		pixels;
 	double	delta_x;
@@ -86,7 +86,7 @@ static t_line	*ft_vertical_line(t_point *point)
 	return (line);
 }
 
-void	ft_put_lines(t_data *data, t_point *current_point)
+void	ft_put_lines(t_img *data, t_point *current_point)
 {
 	while (current_point)
 	{

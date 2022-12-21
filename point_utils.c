@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:22:34 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/18 13:45:39 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/21 12:52:37 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,16 @@ void	ft_add_point(t_point **list, int x, int y, int z)
 	while (node->next)
 		node = node->next;
 	node->next = new_point;
+}
+
+void	ft_clear_point_list(t_point **point_list_head, void (*del)(void *))
+{
+	t_point	*about_to_del;
+
+	while (*point_list_head)
+	{
+		about_to_del = *point_list_head;
+		*point_list_head = (*point_list_head)->next;
+		del(about_to_del);
+	}
 }
