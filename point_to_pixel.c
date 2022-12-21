@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:36:10 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/20 19:41:16 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:12:37 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,10 @@ static t_pixel	ft_isometric(t_point *point)
 	pixel.x = (int) x;
 	pixel.y = (int) y;
 	pixel.color = 0xFFFFFF;
-	pixel.next = NULL;
 	return (pixel);
 }
 
 t_pixel	ft_point_to_pixel(t_point *point)
 {
 	return (ft_isometric(point));
-}
-
-t_pixel	*ft_points_to_pixels(t_point *point_list_head)
-{
-	t_pixel	*pixel_list;
-	t_point	*current_point;
-
-	pixel_list = NULL;
-	current_point = point_list_head;
-	while (current_point)
-	{
-		ft_add_pixel_to_list(&pixel_list, ft_point_to_pixel(current_point));
-		current_point = current_point->next;
-	}
-	return (pixel_list);
 }

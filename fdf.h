@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:41:23 by mvalient          #+#    #+#             */
-/*   Updated: 2022/12/21 12:52:21 by mvalient         ###   ########.fr       */
+/*   Updated: 2022/12/21 13:12:37 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_pixel
 	int				x;
 	int				y;
 	int				color;
-	struct s_pixel	*next;
 }				t_pixel;
 
 typedef struct s_line
@@ -69,12 +68,9 @@ typedef struct s_img
 
 t_point	*ft_read_file(char *file);
 t_pixel	ft_point_to_pixel(t_point *point);
-void	ft_clear_point_list(t_point **lst, void (*del)(void *));
-t_pixel	*ft_points_to_pixels(t_point *point_list_head);
 void	ft_add_point(t_point **list, int x, int y, int z);
-void	ft_add_pixel_to_list(t_pixel **list, t_pixel pixel);
+void	ft_clear_point_list(t_point **lst, void (*del)(void *));
 void	ft_put_pixel(t_img *img, int x, int y, int color);
-void	ft_put_pixels(t_img *img, t_pixel *pixel_list_head);
 void	ft_put_lines(t_img *data, t_point *point_list_head);
 
 #endif
